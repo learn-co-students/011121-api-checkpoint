@@ -54,31 +54,64 @@ def get_pokemon_types(name):
     
     return [type_data["type"]["name"] for type_data in poke_data["types"]]
 
-test.save()
-
-
+test.save(get_pokemon_types("pikachu"), 'pika_type')
+test.save(get_pokemon_types("snorlax"), 'snorlax_type')
+test.save(get_pokemon_types("moltres"), 'moltres_type')
+test.save(get_pokemon_types("squirtle"), 'squirtle_type')
 
 ### END SOLUTION
+
+#Uncomment and replace the `None`s with your work to complete the function
+
+#Check your work with the provided test cell below
+
+def get_pokemon_types(name):
+    '''
+    input: name - a string of the pokemon's name
+    
+    return: a list of strings of the one or more types belonging to the pokemon
+    '''
+    # Make a request to "https://pokeapi.co/api/v2/pokemon/<add-name-of-pokemon-here>"
+    #None
+    # Extract and return the names of the types
+    #None
 ```
 
 
 ```python
-# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS### BEGIN HIDDEN TESTS
+# Run this cell to test your code
+get_pokemon_types("bulbasaur")
+
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
 
 
 from test_scripts.test_class import Test
 test = Test()
 
-test.run_test()
+test.run_test(get_pokemon_types("pikachu"), 
+              'pika_type',
+              "looks like you didn't return the right content for poor pikachu???"
+             )
 
+test.run_test(get_pokemon_types("snorlax"), 
+              'snorlax_type',
+              "looks like you didn't return the right content for poor snorlax???"
+             )
+
+test.run_test(get_pokemon_types("moltres"), 
+              'moltres_type',
+               "looks like you didn't return the right content for poor moltres???"
+             )
+
+test.run_test(get_pokemon_types("squirtle"), 
+              'squirtle_type',
+              "looks like you didn't return the right content for poor squirtle???"
+             )
 
 ### END HIDDEN TESTS
-```
-
-
-```python
-# Run this cell without changes to test your code
-get_pokemon_types("bulbasaur")
 ```
 
 ## 2. Accessing Data Through Web Scraping
@@ -141,29 +174,79 @@ def get_pokemon_designers(name):
     
     return designers
 
-test.save()
-
+test.save(get_pokemon_designers("pikachu"), 'pika_designers')
+test.save(get_pokemon_designers("snorlax"), 'snorlax_designers')
+test.save(get_pokemon_designers("moltres"), 'moltres_designers')
+test.save(get_pokemon_designers("squirtle"), 'squirtle_designers')
 
 
 ### END SOLUTION
+
+# Replace None with appropriate code
+
+def get_pokemon_designers(name):
+    '''
+    input: name - a string of the pokemon's name
+    
+    return: a string representing the designer(s) of the pokemon
+    '''
+    wikipedia_page = requests.get(f"https://en.wikipedia.org/wiki/{name}")
+    soup = BeautifulSoup(wikipedia_page.content, "html.parser")
+    
+    # Search soup for a table HTML tag with class "infobox"
+    info_box = None
+    
+    # Search info_box for tr HTML tags and select the fifth one (index 4)
+    fifth_row = None
+    
+    # Search fifth_row for a td HTML tag
+    table_cell = None
+    
+    # Extract the text from table_cell
+    designers = None
+    
+    return designers
 ```
 
 
 ```python
-# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS### BEGIN HIDDEN TESTS
+# Run this cell to test your code
+get_pokemon_designers("pikachu")
+
+
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL
+# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS
+
+### BEGIN HIDDEN TESTS
 
 
 from test_scripts.test_class import Test
 test = Test()
 
-test.run_test()
+test.run_test(get_pokemon_designers("pikachu"), 
+              'pika_designers', 
+              "looks like you didn't return the correct designers for poor pikachu??"
+             )
 
+test.run_test(get_pokemon_designers("snorlax"), 
+              'snorlax_designers', 
+              "looks like you didn't return the correct designers for poor snorlax??"
+             )
+
+test.run_test(get_pokemon_designers("moltres"), 
+              'moltres_designers', 
+              "looks like you didn't return the correct designers for poor moltres??"
+             )
+
+test.run_test(get_pokemon_designers("squirtle"), 
+              'squirtle_designers', 
+              "looks like you didn't return the correct designers for poor squirtle??"
+             )
 
 ### END HIDDEN TESTS
 ```
 
 
 ```python
-# Run this cell without changes to test your code
-get_pokemon_designers("pikachu")
+
 ```
