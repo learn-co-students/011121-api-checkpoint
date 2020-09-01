@@ -8,14 +8,6 @@ import json
 from bs4 import BeautifulSoup
 ```
 
-
-```python
-# __SOLUTION__ 
-import requests
-import json
-from bs4 import BeautifulSoup
-```
-
 In this assessment you will primarily be exploring a Pokemon dataset. Pokemon are fictional creatures from the [Nintendo franchise](https://en.wikipedia.org/wiki/Pok%C3%A9mon) of the same name.
 
 Some Pokemon facts that might be useful:
@@ -45,23 +37,12 @@ get_pokemon_types("moltres")   # returns ["flying", "fire"]
 
 
 ```python
-# Replace None with appropriate code
-
-def get_pokemon_types(name):
-    '''
-    input: name - a string of the pokemon's name
-    
-    return: a list of strings of the one or more types belonging to the pokemon
-    '''
-    # Make a request to "https://pokeapi.co/api/v2/pokemon/<add-name-of-pokemon-here>"
-    None
-    # Extract and return the names of the types
-    None
-```
+### BEGIN SOLUTION
 
 
-```python
-# __SOLUTION__ 
+from test_scripts.test_class import Test
+test = Test()
+
 def get_pokemon_types(name):
     '''
     input: name - a string of the pokemon's name
@@ -72,6 +53,26 @@ def get_pokemon_types(name):
     poke_data = requests.get(url).json()
     
     return [type_data["type"]["name"] for type_data in poke_data["types"]]
+
+test.save()
+
+
+
+### END SOLUTION
+```
+
+
+```python
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS### BEGIN HIDDEN TESTS
+
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 
@@ -79,19 +80,6 @@ def get_pokemon_types(name):
 # Run this cell without changes to test your code
 get_pokemon_types("bulbasaur")
 ```
-
-
-```python
-# __SOLUTION__ 
-get_pokemon_types("bulbasaur")
-```
-
-
-
-
-    ['poison', 'grass']
-
-
 
 ## 2. Accessing Data Through Web Scraping
 
@@ -123,35 +111,12 @@ get_pokemon_designers("moltres")   # returns 'Ken Sugimori'
 
 
 ```python
-# Replace None with appropriate code
-
-def get_pokemon_designers(name):
-    '''
-    input: name - a string of the pokemon's name
-    
-    return: a string representing the designer(s) of the pokemon
-    '''
-    wikipedia_page = requests.get(f"https://en.wikipedia.org/wiki/{name}")
-    soup = BeautifulSoup(wikipedia_page.content, "html.parser")
-    
-    # Search soup for a table HTML tag with class "infobox"
-    info_box = None
-    
-    # Search info_box for tr HTML tags and select the fifth one (index 4)
-    fifth_row = None
-    
-    # Search fifth_row for a td HTML tag
-    table_cell = None
-    
-    # Extract the text from table_cell
-    designers = None
-    
-    return designers
-```
+### BEGIN SOLUTION
 
 
-```python
-# __SOLUTION__ 
+from test_scripts.test_class import Test
+test = Test()
+
 
 def get_pokemon_designers(name):
     '''
@@ -175,28 +140,30 @@ def get_pokemon_designers(name):
     designers = table_cell.text
     
     return designers
+
+test.save()
+
+
+
+### END SOLUTION
+```
+
+
+```python
+# PUT ALL WORK FOR THE ABOVE QUESTION ABOVE THIS CELL# THIS UNALTERABLE CELL CONTAINS HIDDEN TESTS### BEGIN HIDDEN TESTS
+
+
+from test_scripts.test_class import Test
+test = Test()
+
+test.run_test()
+
+
+### END HIDDEN TESTS
 ```
 
 
 ```python
 # Run this cell without changes to test your code
 get_pokemon_designers("pikachu")
-```
-
-
-```python
-# __SOLUTION__ 
-get_pokemon_designers("pikachu")
-```
-
-
-
-
-    'Atsuko Nishida and Ken Sugimori'
-
-
-
-
-```python
-
 ```
