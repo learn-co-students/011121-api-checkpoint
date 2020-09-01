@@ -246,7 +246,37 @@ test.run_test(get_pokemon_designers("squirtle"),
 ### END HIDDEN TESTS
 ```
 
+### Question 3
 
-```python
+List at least 3 REST API return codes and what they signify
 
-```
+=== BEGIN MARK SCHEME ===
+
+'''
+
+- 200 Successful
+
+- 201 Created
+
+- 203 Accepted
+
+- 400 Bad request
+
+- 401 Unauthorized
+
+- 403 Forbidden
+
+- 404 Not found
+
+- 500 Internal server error
+
+- 501 Not implemented
+
+- 502 Bad gateway
+
+- 503 Service unavailable
+
+'''
+
+
+=== END MARK SCHEME ===
